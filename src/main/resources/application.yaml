@@ -1,10 +1,14 @@
+server:
+  max-http-request-header-size: 56KB
+  error:
+    include-stacktrace: never
+
 logging:
   level:
     org.springframework.web: INFO
-    ch.qos.logback: WARN
-    com.pax8.catalog: DEBUG
+    com.pax8.catalog: INFO
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg traceId=%X{traceId} spanId=%X{spanId} %n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n"
 
 management:
   endpoints:
@@ -29,11 +33,6 @@ management:
       export:
         enabled: true
       endpoint: ${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}
-
-server:
-  max-http-request-header-size: 56KB
-  error:
-    include-stacktrace: never
 
 spring:
   application:

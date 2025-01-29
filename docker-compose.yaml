@@ -28,7 +28,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
 
@@ -36,8 +36,16 @@ services:
     image: openzipkin/zipkin:latest
     ports:
       - "9411:9411"
+    environment:
+      - JAVA_OPTS=-Xms512m -Xmx1024m
+
+  load-generator:
+    build:
+      context: ./docker/load-generator
+    logging:
+      driver: "none"
+    depends_on:
+      - app
 
 volumes:
   postgres-data: {}
-  kafka-data: {}
-  kafka-metadata: {}
