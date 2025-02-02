@@ -2,8 +2,6 @@ package com.pax8.catalog.controller;
 
 import com.pax8.catalog.exception.ResourceNotFoundException;
 import com.pax8.catalog.dto.ErrorResponse;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
